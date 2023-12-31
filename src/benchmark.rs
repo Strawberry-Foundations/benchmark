@@ -23,8 +23,8 @@ pub(crate) fn benchmark(time: u64) {
     let result = (x + bench_time_ms) / 900000;
 
     delete_last_line();
-
-    println!("           Finished Benchmark");
+    thread::sleep(Duration::from_secs(1));
+    println!("            Finished Benchmark");
 
     crate::cli_wins::result(result);
 }
