@@ -7,7 +7,7 @@ mod utilities;
 
 use std::env;
 
-pub const VERSION: &str = "1.0.0";
+pub const VERSION: &str = "1.1.0";
 
 fn main() {
     let args: Vec<String> = env::args().collect();
