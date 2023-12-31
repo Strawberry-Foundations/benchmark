@@ -1,4 +1,4 @@
-use crate::colors::{BOLD, C_RESET, CYAN, GREEN, RESET};
+use crate::colors::{BOLD, C_RESET, CYAN, GREEN, RED, RESET};
 use crate::VERSION;
 
 pub fn return_bench_time(bench_time: &u64) {
@@ -8,7 +8,10 @@ pub fn return_bench_time(bench_time: &u64) {
         3 => println!("{BOLD}  {GREEN}|{RESET}      Set benchmark time: {CYAN}{bench_time}s      {GREEN}|{RESET}{C_RESET}"),
         4 => println!("{BOLD}  {GREEN}|{RESET}      Set benchmark time: {CYAN}{bench_time}s     {GREEN}|{RESET}{C_RESET}"),
         5 => println!("{BOLD}  {GREEN}|{RESET}     Set benchmark time: {CYAN}{bench_time}s     {GREEN}|{RESET}{C_RESET}"),
-        _ => std::process::exit(1),
+        _ => {
+            println!("{BOLD}{RED}ERROR: Something went wrong!");
+            std::process::exit(1);
+        },
     }
 }
 
@@ -28,7 +31,10 @@ pub fn return_result(bench_time: &u64) {
         4 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
         5 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}               {GREEN}|{RESET}{C_RESET}"),
         6 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
-        _ => std::process::exit(1),
+        _ => {
+            println!("{BOLD}{RED}ERROR: Something went wrong!");
+            std::process::exit(1);
+        },
     }
 }
 
@@ -39,4 +45,3 @@ pub fn result(result: u64) {
     println!("{BOLD}  {GREEN}|{RESET}               points!              {GREEN}|{RESET}{C_RESET}");
     println!("{BOLD}  {GREEN}* ---------------------------------- *{GREEN}{C_RESET}\n");
 }
-
