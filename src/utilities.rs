@@ -22,6 +22,9 @@ pub fn start_counter() {
     thread::sleep(Duration::from_secs(1));
     delete_last_line();
 
+    println!("              Starting in {BOLD}{CYAN}0s{C_RESET}");
     thread::sleep(Duration::from_secs(1));
+    delete_last_line();
+
     println!("           Starting Benchmark...");
 }
