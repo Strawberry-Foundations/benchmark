@@ -21,7 +21,8 @@ pub(crate) fn benchmark(time: u64) {
     let bench_time_ms = bench_time * 1000;
     let result = (x + bench_time_ms) / 900000;
 
-    println!("Eingestelle Benchmark-Zeit: {}s ({}ms)", bench_time, bench_time_ms);
     println!("Der Counter hat bis {} gezählt", x);
     println!("Ergebnis: {result}");
+
+    crate::cli_wins::result(result);
 }
