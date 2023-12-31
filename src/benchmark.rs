@@ -1,5 +1,6 @@
 use std::thread;
 use std::time::Duration;
+use crate::utilities::delete_last_line;
 
 pub(crate) fn benchmark(time: u64) {
     let running = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(true));
@@ -20,6 +21,10 @@ pub(crate) fn benchmark(time: u64) {
 
     let bench_time_ms = bench_time * 1000;
     let result = (x + bench_time_ms) / 900000;
+
+    delete_last_line();
+
+    println!("           Finished Benchmark");
 
     crate::cli_wins::result(result);
 }
