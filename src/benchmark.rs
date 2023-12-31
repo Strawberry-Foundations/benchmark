@@ -21,5 +21,5 @@ pub(crate) fn benchmark(time: u64) {
     let bench_time_ms = bench_time * 1000;
     let result = (x + bench_time_ms) / 900000;
 
-    crate::cli_wins::result(10000);
+    crate::cli_wins::result(1000000);
 }
