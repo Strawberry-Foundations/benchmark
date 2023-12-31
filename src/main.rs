@@ -1,4 +1,5 @@
-#[allow(dead_code)]
+#![allow(dead_code)]
+
 mod colors;
 mod cli_wins;
 mod benchmark;
@@ -19,7 +20,7 @@ fn main() {
 
     cli_wins::startup(&bench_time);
 
-    utilities::start_counter();
+    // utilities::start_counter();
 
     benchmark::benchmark(bench_time);
 }
