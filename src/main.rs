@@ -20,7 +20,7 @@ fn main() {
 
     cli_wins::startup(&bench_time);
 
-    // utilities::start_counter();
+    utilities::start_counter();
 
     benchmark::benchmark(bench_time);
 }
