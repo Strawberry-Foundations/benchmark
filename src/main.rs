@@ -2,8 +2,8 @@
 
 mod colors;
 mod cli_wins;
-mod benchmark;
 mod utilities;
+mod engines;
 
 use std::env;
 
@@ -22,5 +22,5 @@ fn main() {
 
     utilities::start_counter();
 
-    benchmark::benchmark(bench_time);
+    engines::num_counter::benchmark(bench_time);
 }
