@@ -1,6 +1,7 @@
 use std::{io, thread};
 use std::io::Write;
 use std::time::Duration;
+use crate::colors::{BOLD, C_RESET, CYAN};
 
 pub fn delete_last_line() {
     print!("\x1b[1A");
@@ -9,17 +10,18 @@ pub fn delete_last_line() {
 }
 
 pub fn start_counter() {
-    println!("            Starting in 3");
+    println!("              Starting in {BOLD}{CYAN}3s{C_RESET}");
     thread::sleep(Duration::from_secs(1));
     delete_last_line();
 
-    println!("            Starting in 2");
+    println!("              Starting in {BOLD}{CYAN}2s{C_RESET}");
     thread::sleep(Duration::from_secs(1));
     delete_last_line();
 
-    println!("            Starting in 1");
+    println!("              Starting in {BOLD}{CYAN}1s{C_RESET}");
     thread::sleep(Duration::from_secs(1));
     delete_last_line();
 
     thread::sleep(Duration::from_secs(1));
+    println!("           Starting Benchmark...");
 }
