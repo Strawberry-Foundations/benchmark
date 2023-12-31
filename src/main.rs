@@ -22,5 +22,5 @@ fn main() {
 
     utilities::start_counter();
 
-    engines::num_counter::benchmark(bench_time);
+    engines::num_counter::benchmark(bench_time, true); // might change this later
 }

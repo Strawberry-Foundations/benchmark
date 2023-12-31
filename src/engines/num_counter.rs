@@ -1,8 +1,16 @@
-use std::thread;
+use core::time;
+use std::thread::{self, sleep};
 use std::time::Duration;
 use crate::utilities::delete_last_line;
+use crate::colors::{YELLOW, C_RESET};
 
-pub(crate) fn benchmark(time: u64) {
+pub(crate) fn benchmark(time: u64, showcounter: bool) {
+    if showcounter { 
+        println!("{YELLOW}WARNING: You have enabled 'showcounter', this currently drags down the score heavily, used for testing.{C_RESET}");
+        sleep(time::Duration::from_secs(5));
+    
+    }
+    
     let running = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(true));
     let running_clone = running.clone();
 
@@ -15,8 +23,14 @@ pub(crate) fn benchmark(time: u64) {
         running_clone.store(false, std::sync::atomic::Ordering::Relaxed);
     });
 
+    if showcounter { println!("{YELLOW}WARNING: You have enabled 'showcounter', this currently drags down the score heavily, used for testing.{C_RESET}") }
+
     while running.load(std::sync::atomic::Ordering::Relaxed) {
         x += 1;
+        if showcounter && x % 10000 == 0 {
+            delete_last_line();
+            println!("{x}");
+        }
     }
 
     let bench_time_ms = bench_time * 1000;
