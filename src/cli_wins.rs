@@ -26,7 +26,7 @@ pub fn return_result(bench_time: &u64) {
         2 => println!("{BOLD}  {GREEN}|{RESET}                 {CYAN}{bench_time}                 {GREEN}|{RESET}{C_RESET}"),
         3 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                 {GREEN}|{RESET}{C_RESET}"),
         4 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
-        5 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
+        5 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}               {GREEN}|{RESET}{C_RESET}"),
         6 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
         _ => std::process::exit(1),
     }
