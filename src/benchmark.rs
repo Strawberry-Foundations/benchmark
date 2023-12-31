@@ -1,7 +1,7 @@
 use std::thread;
 use std::time::Duration;
 
-fn benchmark(time: u64) {
+pub(crate) fn benchmark(time: u64) {
     let running = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(true));
     let running_clone = running.clone();
 
