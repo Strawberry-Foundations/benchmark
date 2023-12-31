@@ -21,11 +21,5 @@ pub(crate) fn benchmark(time: u64) {
     let bench_time_ms = bench_time * 1000;
     let result = (x + bench_time_ms) / 900000;
 
-<<<<<<< HEAD
-=======
-    println!("Counter counted until {}", x);
-    println!("Score: {result} Points");
-
->>>>>>> e5fb5d1e636bb1fc7e34b8daea288067cce25db9
     crate::cli_wins::result(result);
 }
