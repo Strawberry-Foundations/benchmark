@@ -30,11 +30,8 @@ pub fn return_result(bench_time: &u64) {
         3 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                 {GREEN}|{RESET}{C_RESET}"),
         4 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
         5 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}               {GREEN}|{RESET}{C_RESET}"),
-        6 => println!("{BOLD}  {GREEN}|{RESET}                {CYAN}{bench_time}                {GREEN}|{RESET}{C_RESET}"),
-        _ => {
-            println!("{BOLD}{RED}ERROR: Something went wrong!");
-            std::process::exit(1);
-        },
+        6 => println!("{BOLD}  {GREEN}|{RESET}               {CYAN}{bench_time}               {GREEN}|{RESET}{C_RESET}"),
+        _ => println!("{BOLD}  {GREEN}|{RESET}            over {CYAN}999.999            {GREEN}|{RESET}{C_RESET}"),
     }
 }
 
