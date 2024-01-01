@@ -4,9 +4,9 @@
 extern crate core;
 
 mod colors;
-mod cli_wins;
 mod utilities;
 mod engines;
+mod cli_wins;
 
 use std::env;
 
@@ -16,7 +16,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let bench_time = args.get(1).map_or(10, |n| n.parse().unwrap());
 
-    cli_wins::startup(bench_time);
+    cli_wins::main::startup(bench_time);
 
     utilities::start_counter();
 
