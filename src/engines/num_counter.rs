@@ -34,7 +34,7 @@ pub fn benchmark(time: u64, showcounter: bool) {
     }
 
     let bench_time_ms = bench_time * 1000;
-    let result = (x + bench_time_ms) / 900000;
+    let result = (x + bench_time_ms) / 900_000;
 
     delete_last_line();
     sleep(Duration::from_secs(1));
