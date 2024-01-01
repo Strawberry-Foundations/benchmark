@@ -19,10 +19,6 @@ impl Args {
         }
     }
 
-    pub fn collect_bench_time(&mut self) {
-        self.bench_time = self.args.get(1).map_or(10, |n| n.parse().unwrap());
-    }
-
     pub fn collector(&mut self) -> Vec<String> {
         let args: Vec<String> = env::args().collect();
         self.args = args.clone();
