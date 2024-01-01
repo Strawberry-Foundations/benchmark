@@ -1,6 +1,7 @@
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::thread;
+use std::thread::sleep;
 use std::time::Duration;
 
 use crate::utilities::delete_last_line;
@@ -40,7 +41,7 @@ pub fn benchmark(time: u64, num_threads: u8) {
     let result = (total_count + bench_time_ms) / 900_000;
 
     delete_last_line();
-    thread::sleep(Duration::from_secs(1));
+    sleep(Duration::from_millis(500));
     println!("            Finished Benchmark");
 
     crate::cli_wins::result::result(result);
