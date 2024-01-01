@@ -40,7 +40,7 @@ pub fn benchmark(time: u64, showcounter: bool) {
     let result = (x + bench_time_ms) / 900_000;
 
     delete_last_line();
-    sleep(Duration::from_secs(1));
+    sleep(Duration::from_millis(500));
     println!("            Finished Benchmark");
 
     crate::cli_wins::result::result(result);
