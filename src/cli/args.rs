@@ -27,8 +27,6 @@ impl Args {
         let args: Vec<String> = env::args().collect();
         self.args = args.clone();
 
-        // self.collect_bench_time();
-
         args
     }
 
