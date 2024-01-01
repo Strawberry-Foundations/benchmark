@@ -13,7 +13,7 @@ use crate::cli::sections::help_section;
 use crate::engines::benchmark::Benchmark;
 use crate::type_modes::{CPUMode, Modes};
 
-pub const VERSION: &str = "1.2.0";
+pub const VERSION: &str = "1.2.1";
 
 fn main() {
     let mut args = Args::new();
