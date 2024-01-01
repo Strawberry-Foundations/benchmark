@@ -19,7 +19,7 @@ pub fn benchmark(time: u64, showcounter: bool) {
     let bench_time = time;
 
     thread::spawn(move || {
-        thread::sleep(Duration::from_secs(bench_time));
+        sleep(Duration::from_secs(bench_time));
         running_clone.store(false, std::sync::atomic::Ordering::Relaxed);
     });
 
@@ -37,7 +37,7 @@ pub fn benchmark(time: u64, showcounter: bool) {
     let result = (x + bench_time_ms) / 900000;
 
     delete_last_line();
-    thread::sleep(Duration::from_secs(1));
+    sleep(Duration::from_secs(1));
     println!("            Finished Benchmark");
 
     crate::cli_wins::result(result);
