@@ -43,7 +43,7 @@ pub fn benchmark(num_threads: u32, time: u64) {
     thread::sleep(Duration::from_secs(1));
     println!("            Finished Benchmark");
 
-    crate::cli_wins::result(result);
+    crate::cli_wins::result::result(result);
 
     // println!("{}", total_count);
 }
