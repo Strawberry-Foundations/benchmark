@@ -10,21 +10,12 @@ pub fn delete_last_line() {
 }
 
 pub fn start_counter() {
-    println!("              Starting in {BOLD}{CYAN}3s{C_RESET}");
-    thread::sleep(Duration::from_secs(1));
-    delete_last_line();
+    for i in (0..4).rev() {
+        println!("              Starting in {BOLD}{CYAN}{i}s{C_RESET}");
+        thread::sleep(Duration::from_secs(1));
+        delete_last_line();
+    }
 
-    println!("              Starting in {BOLD}{CYAN}2s{C_RESET}");
-    thread::sleep(Duration::from_secs(1));
-    delete_last_line();
-
-    println!("              Starting in {BOLD}{CYAN}1s{C_RESET}");
-    thread::sleep(Duration::from_secs(1));
-    delete_last_line();
-
-    println!("              Starting in {BOLD}{CYAN}0s{C_RESET}");
-    thread::sleep(Duration::from_secs(1));
-    delete_last_line();
-
+    thread::sleep(Duration::from_millis(500));
     println!("           Starting Benchmark...");
 }
