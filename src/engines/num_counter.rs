@@ -43,5 +43,5 @@ pub fn benchmark(time: u64, showcounter: bool) {
     sleep(Duration::from_secs(1));
     println!("            Finished Benchmark");
 
-    crate::cli_wins::result(result);
+    crate::cli_wins::result::result(result);
 }
