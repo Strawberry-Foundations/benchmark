@@ -1,6 +1,8 @@
 #![allow(dead_code)]
 #![warn(clippy::all, clippy::nursery, clippy::pedantic)]
 
+extern crate core;
+
 mod colors;
 mod cli_wins;
 mod utilities;
