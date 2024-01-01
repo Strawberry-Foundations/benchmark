@@ -4,10 +4,9 @@ use std::thread;
 use std::time::Duration;
 use crate::utilities::delete_last_line;
 
-pub fn main(time: u64) {
+pub fn main(num_threads: u32, time: u64) {
     let running = Arc::new(AtomicBool::new(true));
     let mut handles = vec![];
-    let mut num_threads: u32 = 16;
 
     let bench_time = time;
 
