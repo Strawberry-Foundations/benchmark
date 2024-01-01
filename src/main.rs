@@ -17,5 +17,6 @@ fn main() {
 
     utilities::start_counter();
 
-    engines::num_counter::benchmark(bench_time, false); // might change this later
+    // engines::num_counter::benchmark(bench_time, false); // might change this later
+    engines::num_counter_mthread::main(bench_time);
 }
