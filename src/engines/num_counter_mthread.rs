@@ -36,7 +36,7 @@ pub fn benchmark(num_threads: u32, time: u64) {
 
     let total_count: u64 = results.iter().sum();
     let bench_time_ms = bench_time * 1000;
-    let result = (total_count + bench_time_ms) / 900000;
+    let result = (total_count + bench_time_ms) / 900_000;
 
     delete_last_line();
     thread::sleep(Duration::from_secs(1));
