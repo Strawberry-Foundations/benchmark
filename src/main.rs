@@ -10,6 +10,7 @@ mod type_modes;
 
 use crate::cli::args::Args;
 use crate::cli::sections::help_section;
+use crate::engines::benchmark::Benchmark;
 use crate::type_modes::{CPUMode, Modes};
 
 pub const VERSION: &str = "1.2.0";
@@ -18,41 +19,40 @@ fn main() {
     let mut args = Args::new();
     let collector = args.collector();
 
-    let mut mode: Modes             = Modes::NUMBERS;
-    let mut bench_time: u64         = 10;
-
-    let mut threading_mode: CPUMode = CPUMode::SINGLE;
-    let mut cpu_threads         = u8::try_from(std::thread::available_parallelism().unwrap().get()).unwrap();
-
-    let mut show_counter: bool      = false;
+    let mut benchmark = Benchmark::new();
 
     for (index, arg) in collector.iter().enumerate() {
         match arg.as_str() {
             "--help"           => help_section(),
-            "-n" | "--numbers" => mode              = Modes::NUMBERS,
-            "-g" | "--graphic" => mode              = Modes::GRAPHIC,
-            "-m" | "--multi"   => threading_mode    = CPUMode::MULTI,
-            "-s" | "--single"  => threading_mode    = CPUMode::SINGLE,
-            "-c" | "--counter" => show_counter      = true,
-            "-h" | "--threads" => cpu_threads       = collector.get(index + 1)
+            "-n" | "--numbers" => benchmark.mode = Modes::NUMBERS,
+            "-g" | "--graphic" => benchmark.mode = Modes::GRAPHIC,
+            "-m" | "--multi"   => benchmark.num_counter.threading_mode = CPUMode::MULTI,
+            "-s" | "--single"  => benchmark.num_counter.threading_mode = CPUMode::SINGLE,
+            "-c" | "--counter" => benchmark.num_counter.counter = true,
+            "-h" | "--threads" => benchmark.num_counter.threads = collector.get(index + 1)
                                                                .map_or(10,|val| val.parse::<u8>().map_or(10, |cpu_threads| cpu_threads)),
             _    => {  }
         };
 
         if arg.as_str() == "-t" {
-            bench_time = collector.get(index + 1).map_or(10, |val| val.parse::<u64>().map_or(10, |parsed_time| parsed_time));
+            benchmark.benchmark_duration = collector.get(index + 1).map_or(10, |val| val.parse::<u64>().map_or(10, |parsed_time| parsed_time));
         }
     }
 
-    match mode {
-        Modes::NUMBERS => cli_wins::num::startup(bench_time, &threading_mode),
-        _              => { }
+    if matches!(benchmark.mode, Modes::NUMBERS) {
+        cli_wins::num::startup(benchmark.benchmark_duration, &benchmark.num_counter.threading_mode);
     }
 
     utilities::start_counter();
 
-    match mode {
-        Modes::NUMBERS => args.bench_num(bench_time, &threading_mode, cpu_threads, show_counter),
+    match benchmark.mode {
+        Modes::NUMBERS => args.bench_num(
+            benchmark.benchmark_duration,
+            &benchmark.num_counter.threading_mode,
+            benchmark.num_counter.threads,
+            benchmark.num_counter.counter
+        ),
+
         Modes::GRAPHIC | Modes::NONE => { },
     }
 }
