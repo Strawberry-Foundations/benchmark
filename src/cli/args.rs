@@ -2,6 +2,7 @@ use std::env;
 
 pub struct Args {
     pub args: Vec<String>,
+    pub command: String,
     pub bench_time: u64,
 }
 
@@ -9,6 +10,7 @@ impl Args {
     pub const fn new() -> Self {
         Self {
             args: vec![],
+            command: String::new(),
             bench_time: 0,
         }
     }
