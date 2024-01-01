@@ -8,6 +8,5 @@ pub enum Modes {
 #[derive(Debug)]
 pub enum CPUMode {
     SINGLE,
-    MULTI,
-    NONE
+    MULTI
 }
