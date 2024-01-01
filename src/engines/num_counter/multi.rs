@@ -5,7 +5,7 @@ use std::time::Duration;
 
 use crate::utilities::delete_last_line;
 
-pub fn benchmark(num_threads: u32, time: u64) {
+pub fn benchmark(time: u64, num_threads: u8) {
     let running = Arc::new(AtomicBool::new(true));
     let mut handles = vec![];
 
