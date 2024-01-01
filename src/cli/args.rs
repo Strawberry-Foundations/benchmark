@@ -30,8 +30,8 @@ impl Args {
         self.bench_time = bench_time;
 
         match threading_mode {
-            CPUMode::SINGLE | CPUMode::NONE => engines::num_counter::single::benchmark(bench_time, show_counter),
-            CPUMode::MULTI => engines::num_counter::multi::benchmark(bench_time, cpu_threads),
+            CPUMode::SINGLE => engines::num_counter::single::benchmark(bench_time, show_counter),
+            CPUMode::MULTI  => engines::num_counter::multi::benchmark(bench_time, cpu_threads),
         }
     }
 }
