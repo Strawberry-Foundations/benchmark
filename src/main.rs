@@ -44,7 +44,10 @@ fn main() {
         }
     }
 
-    cli_wins::main::startup(bench_time, &mode);
+    match mode {
+        Modes::NUMBERS => cli_wins::num::startup(bench_time, &threading_mode),
+        _              => { }
+    }
 
     utilities::start_counter();
 
