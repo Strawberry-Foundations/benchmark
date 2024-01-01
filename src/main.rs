@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+#![warn(clippy::all, clippy::nursery, clippy::pedantic)]
 
 mod colors;
 mod cli_wins;
