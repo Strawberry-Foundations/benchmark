@@ -12,7 +12,7 @@ pub const VERSION: &str = "1.1.0";
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let bench_time = args.get(1).map(|n| n.parse().unwrap()).unwrap_or(10);
+    let bench_time = args.get(1).map_or(10, |n| n.parse().unwrap());
 
     cli_wins::startup(&bench_time);
 
