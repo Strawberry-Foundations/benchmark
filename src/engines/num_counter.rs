@@ -1,17 +1,20 @@
-use core::time;
-use std::thread::{self, sleep};
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
+use std::thread;
 use std::time::Duration;
+use std::thread::sleep;
+
+use crate::colors::{C_RESET, YELLOW};
 use crate::utilities::delete_last_line;
-use crate::colors::{YELLOW, C_RESET};
 
 pub fn benchmark(time: u64, showcounter: bool) {
     if showcounter { 
         println!("{YELLOW}WARNING: You have enabled 'showcounter', this currently drags down the score heavily, used for testing.{C_RESET}");
-        sleep(time::Duration::from_secs(5));
+        sleep(Duration::from_secs(5));
     
     }
     
-    let running = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(true));
+    let running = Arc::new(AtomicBool::new(true));
     let running_clone = running.clone();
 
     let mut x: u64 = 0;
@@ -20,12 +23,12 @@ pub fn benchmark(time: u64, showcounter: bool) {
 
     thread::spawn(move || {
         sleep(Duration::from_secs(bench_time));
-        running_clone.store(false, std::sync::atomic::Ordering::Relaxed);
+        running_clone.store(false, Ordering::Relaxed);
     });
 
     if showcounter { println!("{YELLOW}WARNING: You have enabled 'showcounter', this currently drags down the score heavily, used for testing.{C_RESET}") }
 
-    while running.load(std::sync::atomic::Ordering::Relaxed) {
+    while running.load(Ordering::Relaxed) {
         x += 1;
         if showcounter && x % 10000 == 0 {
             delete_last_line();
