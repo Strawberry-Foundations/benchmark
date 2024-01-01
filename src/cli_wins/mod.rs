@@ -1,3 +1,3 @@
 pub mod main;
-pub mod benchmarks;
-mod time;
+pub mod result;
+pub mod time;
