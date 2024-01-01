@@ -4,7 +4,7 @@ use std::time::Duration;
 use crate::utilities::delete_last_line;
 use crate::colors::{YELLOW, C_RESET};
 
-pub(crate) fn benchmark(time: u64, showcounter: bool) {
+pub fn benchmark(time: u64, showcounter: bool) {
     if showcounter { 
         println!("{YELLOW}WARNING: You have enabled 'showcounter', this currently drags down the score heavily, used for testing.{C_RESET}");
         sleep(time::Duration::from_secs(5));
