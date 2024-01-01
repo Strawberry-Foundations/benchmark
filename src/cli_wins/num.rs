@@ -25,6 +25,6 @@ pub fn startup(bench_time: u64, cpu_mode: &CPUMode) {
     let binding = cpuid.get_processor_brand_string().unwrap();
     let cpu_string = binding.as_str();
 
-    println!("{BOLD}{MAGENTA}CPU: {C_RESET}{}", cpu_string);
+    println!("{BOLD}{MAGENTA}CPU: {C_RESET}{cpu_string}");
     println!("{BOLD}{MAGENTA}Logical Processors: {C_RESET}{}", available_parallelism().unwrap().get());
 }
