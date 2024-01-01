@@ -15,7 +15,7 @@ pub struct NumCounter {
 impl Benchmark {
     pub fn new() -> Self {
         Self {
-            mode: Modes::NONE,
+            mode: Modes::NUMBERS,
             benchmark_duration: 10,
             num_counter: NumCounter {
                 threading_mode: CPUMode::SINGLE,
