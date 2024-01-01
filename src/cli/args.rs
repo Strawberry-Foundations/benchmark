@@ -1,4 +1,8 @@
+#![allow(clippy::match_same_arms)]
+
 use std::env;
+use crate::engines;
+use crate::type_modes::CPUMode;
 
 pub struct Args {
     pub args: Vec<String>,
@@ -23,8 +27,17 @@ impl Args {
         let args: Vec<String> = env::args().collect();
         self.args = args.clone();
 
-        self.collect_bench_time();
+        // self.collect_bench_time();
 
         args
+    }
+
+    pub fn bench_num(&mut self, bench_time: u64, threading_mode: &CPUMode, cpu_threads: u8, show_counter: bool) {
+        self.bench_time = bench_time;
+
+        match threading_mode {
+            CPUMode::SINGLE | CPUMode::NONE => engines::num_counter::single::benchmark(bench_time, show_counter),
+            CPUMode::MULTI => engines::num_counter::multi::benchmark(bench_time, cpu_threads),
+        }
     }
 }
