@@ -14,7 +14,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let bench_time = args.get(1).map_or(10, |n| n.parse().unwrap());
 
-    cli_wins::startup(&bench_time);
+    cli_wins::startup(bench_time);
 
     utilities::start_counter();
 
